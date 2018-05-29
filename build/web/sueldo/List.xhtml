@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSueldoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSueldoEmpty}" rendered="#{sueldoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sueldoController.items.rowCount > 0}">
+                    <h:outputText value="#{sueldoController.pagination.pageFirstItem + 1}..#{sueldoController.pagination.pageLastItem + 1}/#{sueldoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sueldoController.previous}" value="#{bundle.Previous} #{sueldoController.pagination.pageSize}" rendered="#{sueldoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sueldoController.next}" value="#{bundle.Next} #{sueldoController.pagination.pageSize}" rendered="#{sueldoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sueldoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSueldoTitle_idEmp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSueldoTitle_tipoEmp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoEmp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSueldoTitle_sueldoEmp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sueldoEmp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSueldoTitle_fondoEmp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fondoEmp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSueldoTitle_diasVaca}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.diasVaca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSueldoTitle_empleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.empleado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sueldoController.prepareView}" value="#{bundle.ListSueldoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sueldoController.prepareEdit}" value="#{bundle.ListSueldoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sueldoController.destroy}" value="#{bundle.ListSueldoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sueldoController.prepareCreate}" value="#{bundle.ListSueldoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSueldoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

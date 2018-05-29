@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSueldoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSueldoLabel_idEmp}"/>
+                    <h:outputText value="#{sueldoController.selected.idEmp}" title="#{bundle.ViewSueldoTitle_idEmp}"/>
+                    <h:outputText value="#{bundle.ViewSueldoLabel_tipoEmp}"/>
+                    <h:outputText value="#{sueldoController.selected.tipoEmp}" title="#{bundle.ViewSueldoTitle_tipoEmp}"/>
+                    <h:outputText value="#{bundle.ViewSueldoLabel_sueldoEmp}"/>
+                    <h:outputText value="#{sueldoController.selected.sueldoEmp}" title="#{bundle.ViewSueldoTitle_sueldoEmp}"/>
+                    <h:outputText value="#{bundle.ViewSueldoLabel_fondoEmp}"/>
+                    <h:outputText value="#{sueldoController.selected.fondoEmp}" title="#{bundle.ViewSueldoTitle_fondoEmp}"/>
+                    <h:outputText value="#{bundle.ViewSueldoLabel_diasVaca}"/>
+                    <h:outputText value="#{sueldoController.selected.diasVaca}" title="#{bundle.ViewSueldoTitle_diasVaca}"/>
+                    <h:outputText value="#{bundle.ViewSueldoLabel_empleado}"/>
+                    <h:outputText value="#{sueldoController.selected.empleado}" title="#{bundle.ViewSueldoTitle_empleado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sueldoController.destroyAndView}" value="#{bundle.ViewSueldoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSueldoEditLink}"/>
+                <br />
+                <h:commandLink action="#{sueldoController.prepareCreate}" value="#{bundle.ViewSueldoCreateLink}" />
+                <br />
+                <h:commandLink action="#{sueldoController.prepareList}" value="#{bundle.ViewSueldoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSueldoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSueldoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSueldoLabel_idEmp}" for="idEmp" />
+                    <h:inputText id="idEmp" value="#{sueldoController.selected.idEmp}" title="#{bundle.EditSueldoTitle_idEmp}" required="true" requiredMessage="#{bundle.EditSueldoRequiredMessage_idEmp}"/>
+                    <h:outputLabel value="#{bundle.EditSueldoLabel_tipoEmp}" for="tipoEmp" />
+                    <h:inputText id="tipoEmp" value="#{sueldoController.selected.tipoEmp}" title="#{bundle.EditSueldoTitle_tipoEmp}" required="true" requiredMessage="#{bundle.EditSueldoRequiredMessage_tipoEmp}"/>
+                    <h:outputLabel value="#{bundle.EditSueldoLabel_sueldoEmp}" for="sueldoEmp" />
+                    <h:inputText id="sueldoEmp" value="#{sueldoController.selected.sueldoEmp}" title="#{bundle.EditSueldoTitle_sueldoEmp}" required="true" requiredMessage="#{bundle.EditSueldoRequiredMessage_sueldoEmp}"/>
+                    <h:outputLabel value="#{bundle.EditSueldoLabel_fondoEmp}" for="fondoEmp" />
+                    <h:inputText id="fondoEmp" value="#{sueldoController.selected.fondoEmp}" title="#{bundle.EditSueldoTitle_fondoEmp}" required="true" requiredMessage="#{bundle.EditSueldoRequiredMessage_fondoEmp}"/>
+                    <h:outputLabel value="#{bundle.EditSueldoLabel_diasVaca}" for="diasVaca" />
+                    <h:inputText id="diasVaca" value="#{sueldoController.selected.diasVaca}" title="#{bundle.EditSueldoTitle_diasVaca}" required="true" requiredMessage="#{bundle.EditSueldoRequiredMessage_diasVaca}"/>
+                    <h:outputLabel value="#{bundle.EditSueldoLabel_empleado}" for="empleado" />
+                    <h:selectOneMenu id="empleado" value="#{sueldoController.selected.empleado}" title="#{bundle.EditSueldoTitle_empleado}" required="true" requiredMessage="#{bundle.EditSueldoRequiredMessage_empleado}">
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{sueldoController.update}" value="#{bundle.EditSueldoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSueldoViewLink}"/>
+                <br />
+                <h:commandLink action="#{sueldoController.prepareList}" value="#{bundle.EditSueldoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSueldoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

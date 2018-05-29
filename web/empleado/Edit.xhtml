@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEmpleadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_idEmp}" for="idEmp" />
+                    <h:inputText id="idEmp" value="#{empleadoController.selected.idEmp}" title="#{bundle.EditEmpleadoTitle_idEmp}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_idEmp}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_nombreEmp}" for="nombreEmp" />
+                    <h:inputText id="nombreEmp" value="#{empleadoController.selected.nombreEmp}" title="#{bundle.EditEmpleadoTitle_nombreEmp}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_nombreEmp}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_apellidoEmp}" for="apellidoEmp" />
+                    <h:inputText id="apellidoEmp" value="#{empleadoController.selected.apellidoEmp}" title="#{bundle.EditEmpleadoTitle_apellidoEmp}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_apellidoEmp}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_nip}" for="nip" />
+                    <h:inputText id="nip" value="#{empleadoController.selected.nip}" title="#{bundle.EditEmpleadoTitle_nip}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_nip}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_fechaIngreso}" for="fechaIngreso" />
+                    <h:inputText id="fechaIngreso" value="#{empleadoController.selected.fechaIngreso}" title="#{bundle.EditEmpleadoTitle_fechaIngreso}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_fechaIngreso}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_numImss}" for="numImss" />
+                    <h:inputText id="numImss" value="#{empleadoController.selected.numImss}" title="#{bundle.EditEmpleadoTitle_numImss}" required="true" requiredMessage="#{bundle.EditEmpleadoRequiredMessage_numImss}"/>
+                    <h:outputLabel value="#{bundle.EditEmpleadoLabel_sueldo}" for="sueldo" />
+                    <h:selectOneMenu id="sueldo" value="#{empleadoController.selected.sueldo}" title="#{bundle.EditEmpleadoTitle_sueldo}" >
+                        <f:selectItems value="#{sueldoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{empleadoController.update}" value="#{bundle.EditEmpleadoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEmpleadoViewLink}"/>
+                <br />
+                <h:commandLink action="#{empleadoController.prepareList}" value="#{bundle.EditEmpleadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEmpleadoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
